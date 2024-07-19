@@ -1,5 +1,5 @@
 # 🧠 SmartAssistantGPT
-SmartAssistantGPT is an AI-powered assistant that can chat and transcribe audio from users into text. It utilizes OpenAI's GPT-4 model to provide intelligent responses and Whisper for accurate audio transcription. This project demonstrates the integration of React and Node.js with Redux for state management and provides a seamless user experience for chatting and audio transcription.
+SmartAssistantGPT is an AI-powered assistant that can chat and transcribe audio from users into text. It utilizes OpenAI's GPT-4o model to provide intelligent responses and Whisper for accurate audio transcription. This project demonstrates the integration of React and Node.js with Redux for state management and provides a seamless user experience for chatting and audio transcription.
 
 ## ✨ Features
 **Chat Interface:** Engage in conversations with the AI assistant using text input.
