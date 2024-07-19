@@ -9,14 +9,20 @@ SmartChatTranscriberAI is an AI-powered assistant that can chat and transcribe a
 
 ## 🛠 Tech Stack
 **Frontend:** React, Redux Toolkit, Tanstack query
+
 **Backend:** Node.js, Express
+
 **AI Models:** OpenAI GPT-4o, Whisper
+
 **Styling:** Tailwind CSS
 
 ## 📖 Usage
 **Starting a New Chat:** Click on "New chat" in the sidebar to start a new conversation.
+
 **Text Chatting:** Type your message in the input box and press the send button to chat with the AI assistant.
+
 **Audio Transcription:** Click the microphone button to start recording your audio, and click again to stop. The transcribed text will be sent to the chat.
+
 
 ## 🤝 Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
