@@ -3,8 +3,11 @@ SmartChatTranscriberAI is an AI-powered assistant that can chat and transcribe a
 
 ## ✨ Features
 **Chat Interface:** Engage in conversations with the AI assistant using text input.
+
 **Audio Transcription:** Record audio and transcribe it into text.
+
 **State Management:** Efficient state management using Redux Toolkit.
+
 **Responsive Design:** Mobile-friendly and responsive UI.
 
 ## 🛠 Tech Stack
