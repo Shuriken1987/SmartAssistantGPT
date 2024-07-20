@@ -11,3 +11,10 @@
     currentTitle: string;
     tempValue: string;
   }
+
+  export interface ToolbarButtonsProps {
+    isRecording: boolean;
+    startRecording: () => void;
+    stopRecording: () => void;
+    getMessages: () => void;
+  }
