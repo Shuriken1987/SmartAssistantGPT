@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* * {
+  color: #fff;
+} */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+/* Hide scrollbar but allow page scrolling */
+html, body {
+  overflow: scroll;
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+html, body {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Internet Explorer and Edge */
+html, body {
+  -ms-overflow-style: none;
+}
+
+
