@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { setMessage, setTempValue, setValue } from "../../redux/slices/chatSlice";
+import { setMessage, setTempValue, setValue, addChat, setCurrentTitle, } from "../../redux/slices/chatSlice";
 import ToolbarButtons from "./ToolbarButtons";
 import TextArea from "./TextArea";
 
 export const Input: React.FC = () => {
   const dispatch = useDispatch();
-  const { value } = useSelector((state: RootState) => state.chat);  // Importing value from Redux store
+  const { value, currentTitle } = useSelector((state: RootState) => state.chat);  // Importing value from Redux store
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
 
@@ -60,13 +60,27 @@ export const Input: React.FC = () => {
 
       const data = await response.json();
       dispatch(setTempValue(data?.transcribedText.content));
+      if (!currentTitle) {
+        dispatch(setCurrentTitle(data?.transcribedText.content));
+      }
+      const newTitle = currentTitle || data?.transcribedText.content;
+      dispatch(addChat({ title: newTitle, role: "user", content: data?.transcribedText.content })); // User transcribed text response
       dispatch(setMessage(data?.chatResponseText));
+      dispatch(addChat({ title: newTitle, role: "assistant", content: data?.chatResponseText.content })); // Chatbot response
     } catch (error) {
       console.error("Error in handleAudioUpload:", error);
     }
   };
 
   const getMessages = async () => {
+     // Immediately update the chat with the user's input
+     if (!currentTitle) {
+      dispatch(setCurrentTitle(value));
+    }
+    const newChatTitle = currentTitle || value;
+    dispatch(addChat({ title: newChatTitle, role: "user", content: value }));
+    dispatch(setValue("")); // Clear the input field after sending the message
+
     const options = {
       method: "POST",
       body: JSON.stringify({ message: value }),
@@ -76,9 +90,9 @@ export const Input: React.FC = () => {
     try {
       const response = await fetch("http://localhost:8000/completions", options);
       const data = await response.json();
+      dispatch(addChat({ title: newChatTitle, role: data.choices[0].message.role, content: data.choices[0].message.content })); // Check for undefined
       dispatch(setMessage(data.choices ? data.choices[0].message : "")); // Check for undefined
       dispatch(setTempValue(value));
-      dispatch(setValue("")); // Clear the input field after sending the message
     } catch (error) {
       console.error("Error in getMessages:", error);
     }
