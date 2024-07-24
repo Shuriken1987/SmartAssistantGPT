@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
 import assistantImage from '../assets/logo-white.png';
 import { RootState } from "../redux/store";
+import MarkdownIt from "markdown-it";
+
+const md = new MarkdownIt();
 
 export const Content: React.FC = () => {
   const { previousChats, currentTitle } = useSelector((state: RootState) => state.chat);
@@ -30,7 +33,11 @@ export const Content: React.FC = () => {
                     </span>
                   </span>
                   <div className="grow mt-2 space-y-3">
-                    <p className="text-gray-800 dark:text-neutral-200">{chatMessage.content}</p>
+                    {/* <p className="text-gray-800 dark:text-neutral-200">{chatMessage.content}</p> */}
+                    <div
+                      className="text-gray-800 dark:text-neutral-200 text-[18px]"
+                      dangerouslySetInnerHTML={{ __html: md.render(chatMessage.content) }}
+                    ></div>
                   </div>
                 </div>
               </div>
