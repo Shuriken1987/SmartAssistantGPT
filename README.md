@@ -24,7 +24,7 @@ SmartAssistantGPT is an AI-powered assistant that can chat and transcribe audio 
 
 **Text Chatting:** Type your message in the input box and press the send button to chat with the AI assistant.
 
-**Audio Transcription:** Click the microphone button to start recording your audio, and click again to stop. The transcribed text will be sent to the chat.
+**Audio Transcription:** Click the microphone button to start recording your audio, and click again to stop. The audio will be sent to Whisper for transcription, and the answer will be sent to the chat.
 
 
 ## 🤝 Contributing
