@@ -47,7 +47,7 @@ app.post("/completions", async (req: Request, res: Response) => {
       Authorization: `Bearer ${secretKey}`, // Authorization header with the secret key
     },
     data: JSON.stringify({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "user",
@@ -123,7 +123,7 @@ app.post("/transcribe", upload.single("file"), async (req: Request, res: Respons
       const chatResponse = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-4o",
+          model: "gpt-4o-mini",
           messages,
         },
         {
@@ -164,3 +164,4 @@ app.post("/transcribe", upload.single("file"), async (req: Request, res: Respons
 app.listen(port, () => {
   console.log(`[server]: Server is running at ${port}`);
 });
+
